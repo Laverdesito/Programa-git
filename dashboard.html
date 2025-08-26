@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INTERGYM - Panel Principal</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+  <!-- Barra superior -->
+  <header class="topbar">
+    <div class="logo">INTERGYM</div>
+    <!-- Botón menú (solo visible en móvil) -->
+    <span class="menu-toggle">☰</span>
+    <div class="user-menu">
+      <span id="nombreUsuario">👤 Usuario</span>
+      <a href="login.html" class="logout" id="logoutBtn">Cerrar sesión</a>
+    </div>
+  </header>
+
+  <!-- Contenedor principal -->
+  <div class="main-container">
+    <!-- Menú lateral -->
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="#">🏠 Inicio</a></li>
+          <li><a href="#">📅 Rutinas</a></li>
+          <li><a href="#">🍎 Nutrición</a></li>
+          <li><a href="#">📊 Progreso</a></li>
+          <li><a href="#">⚙️ Configuración</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="content">
+      <h1 id="saludo">Bienvenido a INTERGYM</h1>
+      <p>Aquí verás tus estadísticas y accesos rápidos.</p>
+
+      <!-- Tarjetas -->
+      <div class="cards">
+        <div class="card">
+          <h3>Rutinas</h3>
+          <p>Accede a tus planes de entrenamiento.</p>
+        </div>
+        <div class="card">
+          <h3>Nutrición</h3>
+          <p>Consulta tus planes alimenticios.</p>
+        </div>
+        <div class="card">
+          <h3>Progreso</h3>
+          <p>Revisa tu evolución en el tiempo.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Script -->
+  <script>
+    // Mostrar nombre de usuario logueado
+    const usuarioLogueado = localStorage.getItem("usuarioLogueado");
+    const nombreUsuario = document.getElementById("nombreUsuario");
+    const saludo = document.getElementById("saludo");
+
+    if (usuarioLogueado) {
+      nombreUsuario.textContent = `👤 ${usuarioLogueado}`;
+      saludo.textContent = `Bienvenido ${usuarioLogueado} a INTERGYM`;
+    } else {
+      // Si no hay usuario logueado, redirigir a login
+      window.location.href = "login.html";
+    }
+
+    // Botón de logout
+    const logoutBtn = document.getElementById("logoutBtn");
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("usuarioLogueado");
+      window.location.href = "login.html";
+    });
+
+    // Menú responsive (☰)
+    const toggleBtn = document.querySelector(".menu-toggle");
+    const sidebar = document.querySelector(".sidebar");
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>

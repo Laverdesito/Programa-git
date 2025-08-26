@@ -5,6 +5,8 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
   const contrasena = document.getElementById("contrasena").value.trim();
   const mensaje = document.getElementById("mensajeError");
 
+  if (mensaje) mensaje.textContent = "";
+
   const usuarios = [
     { usuario: "admin", contrasena: "1234" },
     { usuario: "andres", contrasena: "abcd" }
@@ -14,8 +16,8 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 
   if (encontrado) {
     localStorage.setItem("usuarioLogueado", usuario);
-    window.location.href = "dashboard.html"; 
+    window.location.href = "dashboard.html";
   } else {
-    mensaje.textContent = "Credenciales incorrectas. Intenta de nuevo.";
+    if (mensaje) mensaje.textContent = "Credenciales incorrectas. Intenta de nuevo.";
   }
 });
