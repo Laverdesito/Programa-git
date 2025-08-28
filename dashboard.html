@@ -14,7 +14,7 @@
     <span class="menu-toggle">☰</span>
     <div class="user-menu">
       <span id="nombreUsuario">👤 Usuario</span>
-      <a href="login.html" class="logout" id="logoutBtn">Cerrar sesión</a>
+      <a href="index.html" class="logout" id="logoutBtn">Cerrar sesión</a>
     </div>
   </header>
 
@@ -68,14 +68,14 @@
       saludo.textContent = `Bienvenido ${usuarioLogueado} a INTERGYM`;
     } else {
       // Si no hay usuario logueado, redirigir a login
-      window.location.href = "login.html";
+      window.location.href = "index.html";
     }
 
     // Botón de logout
     const logoutBtn = document.getElementById("logoutBtn");
     logoutBtn.addEventListener("click", () => {
       localStorage.removeItem("usuarioLogueado");
-      window.location.href = "login.html";
+      window.location.href = "index.html";
     });
 
     // Menú responsive (☰)
